@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101f38">
+  <title>CSS : mise en forme du texte</title>
+  <link rel="stylesheet" href="../css/cours-css/style.css">
+  <link rel="stylesheet" href="../css/style.css" type="text/css">
+</head>
+<body>
+
+        <header class="site-header">
+        <div class="container-nav">
+            <div class="logo-container">
+                <div class="univ-container">
+                    <div class="logo">
+                        <a href=""><img src="../images/logo-espa.jpg" alt="logo-espa" class="logo-espa"></a>
+                    </div>
+                    <div class="header-text">
+                        <p>UNIVERSITE D'ANTANANARIVO</p>
+                        <hr>
+                        <P>ECOLE SUPERIEURE POLYTECHNIQUE D'ANTANTANARIVO</P>              
+                    </div>
+                    <div class="logo">
+                        <a href=""><img src="../images/logo-univ.png" alt="Logo Université" class="logo-univ"></a>
+                    </div>
+                </div>
+                <div class="tco-container">
+                    <div class="header-text">
+                        <p>MENTION TELECOMMUNICATIONS</p>
+                        <p>PARCOURS STI - NIVEAU L2 - 2026</p>  
+                        <p>--- Groupe 7 - 2026 ---</p> 
+                    </div>
+                    <div class="logo-tco">
+                        <a href=""><img src="../images/logo-tco.png" alt="Logo TCO" class="logo-tco"></a>
+                    </div>
+                </div>
+
+            </div>
+            <hr>
+        </div>
+        </header>
+        <nav class="site-nav" aria-label="Barre de navigation">
+                    <a class="nav-link active" href="index.html" aria-current="page">Accueil</a>
+                    <a class="nav-link" href="about.html">À propos de nous</a>
+                    <a class="nav-link" href="telecom.html">Télécommunications</a>
+                    <a class="nav-link" href="cours.html" >Cours</a>
+                    <a class="nav-link" href="web.html">Programme web</a>
+                    <a class="nav-link" href="contact.html">Nos contact</a>
+        </nav>
+
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="layout">
+    <aside class="sidebar">
+      <a class="sidebar-title" href="#contenu"><span class="brand-mark" aria-hidden="true"></span><span>CSS : mise en forme du texte</span></a>
+      <nav aria-label="Chapitres du document">
+      <a href="#vi-taille-des-caracteres" aria-label="VI — Taille des caractères"><span class="nav-num" aria-hidden="true">VI</span><span>Taille des caractères</span></a>
+      <a href="#vii-police-des-caracteres" aria-label="VII — Police des caractères"><span class="nav-num" aria-hidden="true">VII</span><span>Police des caractères</span></a>
+      <a href="#viii-texte-en-italique" aria-label="VIII — Texte en italique"><span class="nav-num" aria-hidden="true">VIII</span><span>Texte en italique</span></a>
+      <a href="#ix-texte-en-gras" aria-label="IX — Texte en gras"><span class="nav-num" aria-hidden="true">IX</span><span>Texte en gras</span></a>
+      <a href="#x-decoration-d-un-texte" aria-label="X — Décoration d’un texte"><span class="nav-num" aria-hidden="true">X</span><span>Décoration d’un texte</span></a>
+      <a href="#xi-alignement-d-un-texte" aria-label="XI — Alignement d’un texte"><span class="nav-num" aria-hidden="true">XI</span><span>Alignement d’un texte</span></a>
+      <a href="#xii-couleur-du-texte-et-de-l-arriere-plan" aria-label="XII — Couleur du texte et de l’arrière-plan"><span class="nav-num" aria-hidden="true">XII</span><span>Couleur du texte et de l’arrière-plan</span></a>
+      </nav>
+    </aside>
+    <main id="contenu">
+      <header class="document-intro">
+        <h1>CSS : mise en forme du texte</h1>
+        <p class="subtitle">Cours développé • tailles, polices, styles, alignement et couleurs</p>
+        <p>Cette fiche reprend les notions essentielles du cours et les accompagne de définitions, d’exemples corrigés et de bonnes pratiques. Les règles CSS s’appliquent aux éléments HTML grâce aux sélecteurs.</p>
+        <p class="code-label"><strong>RAPPEL : STRUCTURE D’UNE RÈGLE CSS</strong></p>
+        <pre class="code-block"><code>sélecteur {
+    propriété: valeur;
+}</code></pre>
+      </header>
+    <section class="chapter" id="vi-taille-des-caracteres" aria-labelledby="vi-taille-des-caracteres-title">
+      <div class="chapter-heading">
+        <span class="chapter-badge" aria-hidden="true">VI</span>
+        <h2 id="vi-taille-des-caracteres-title"><span class="visually-hidden">VI — </span>Taille des caractères</h2>
+      </div>
+      <h3>1. Définition et unités de taille</h3>
+      <p>La propriété font-size règle la taille de la police. On distingue les longueurs dites absolues (une valeur explicite en px, pt, cm…) et les tailles relatives, qui dépendent d’une taille de référence. La syntaxe correcte est « font-size: valeur; ».</p>
+      <h3>2. Tailles absolues</h3>
+      <div class="table-wrap"><table><thead><tr><th>Unité</th><th>Signification et emploi</th></tr></thead><tbody><tr><td>px</td><td>Pixel CSS : courant pour les interfaces ; ce n’est pas forcément un pixel physique de l’écran.</td></tr><tr><td>pt / pc</td><td>Point (1 pt = 1/72 in) ; pica (1 pc = 12 pt). Surtout utilisés pour l’impression.</td></tr><tr><td>in / cm / mm</td><td>Pouce, centimètre et millimètre ; 1 in = 2,54 cm et vaut 96 px en CSS.</td></tr></tbody></table></div>
+      <p class="code-label"><strong>EXEMPLE : PARAGRAPHE DE 16 PX</strong></p>
+      <pre class="code-block"><code>p {
+    font-size: 16px;
+}</code></pre>
+      <aside class="note"><strong>Attention  </strong>Écrire « 16px » sans espace entre le nombre et l’unité. « rem » n’est pas une unité absolue : elle est relative à la taille de la police de l’élément racine.</aside>
+      <h3>3. Tailles relatives</h3>
+      <p>Les unités relatives facilitent l’adaptation du texte aux réglages du navigateur et à la structure de la page. Elles sont généralement préférables pour une interface souple et accessible.</p>
+      <div class="table-wrap"><table><thead><tr><th>Valeur</th><th>Comment elle est calculée</th></tr></thead><tbody><tr><td>em</td><td>Relative à la taille de police héritée du parent : si le parent est à 20px, 1.5em donne 30px.</td></tr><tr><td>rem</td><td>Relative à la taille de police de l’élément racine (&lt;html&gt;) : si elle est à 16px, 1.5rem donne 24px.</td></tr><tr><td>%</td><td>Pour font-size, pourcentage calculé d’après la taille héritée du parent.</td></tr><tr><td>Mots-clés</td><td>xx-small, x-small, small, medium, large, x-large, xx-large : échelle de tailles définie par le navigateur.</td></tr></tbody></table></div>
+      <h4>Exercice corrigé : trois titres</h4>
+      <p>Consigne : afficher « Année 2026 » en vert (1.5em), « Vontovorona » en bleu (1em) et « Antananarivo » en rouge (1.5em).</p>
+
+      <div class="code-pair">
+        <div class="code-unit"><p class="code-label"><strong>HTML</strong></p>
+      <pre class="code-block"><code>&lt;body&gt;
+    &lt;h1&gt;Année 2026&lt;/h1&gt;
+    &lt;h2&gt;Vontovorona&lt;/h2&gt;
+    &lt;h3&gt;Antananarivo&lt;/h3&gt;
+&lt;/body&gt;</code></pre></div>
+        <div class="code-unit"><p class="code-label"><strong>CSS</strong></p>
+      <pre class="code-block"><code>h1 { color: green; font-size: 1.5em; }
+h2 { color: blue;  font-size: 1em; }
+h3 { color: red;   font-size: 1.5em; }</code></pre></div>
+      </div>
+    </section>
+    <section class="chapter" id="vii-police-des-caracteres" aria-labelledby="vii-police-des-caracteres-title">
+      <div class="chapter-heading">
+        <span class="chapter-badge" aria-hidden="true">VII</span>
+        <h2 id="vii-police-des-caracteres-title"><span class="visually-hidden">VII — </span>Police des caractères</h2>
+      </div>
+      <h3>1. Choisir une police avec font-family</h3>
+      <p>La propriété font-family indique la ou les polices utilisées. Le navigateur essaie la première ; si elle manque, il passe à la suivante. Terminer de préférence la liste par une famille générique.</p>
+      <p class="code-label"><strong>EXEMPLE</strong></p>
+      <pre class="code-block"><code>p {
+    font-family: Impact, Verdana, sans-serif;
+}
+div {
+    font-family: Georgia, &quot;Times New Roman&quot;, serif;
+    font-size: x-large;
+}</code></pre>
+      <p>Arial, Verdana, Georgia et Times New Roman sont des noms de polices. En revanche, serif, sans-serif, monospace et cursive sont des familles génériques. Mettre entre guillemets les noms qui contiennent des espaces.</p>
+      <h3>2. Utiliser une police enregistrée dans le projet</h3>
+      <p>On télécharge les fichiers autorisés, on les place dans un dossier du site, puis on les déclare avec @font-face. La licence doit être vérifiée : une police téléchargeable n’est pas nécessairement libre pour tous les usages (ex. Font Squirrel ou DaFont).</p>
+      <div class="table-wrap"><table><thead><tr><th>Format</th><th>À savoir</th></tr></thead><tbody><tr><td>.woff2</td><td>Format Web moderne, compressé et généralement à privilégier.</td></tr><tr><td>.woff</td><td>Format Web très répandu ; bonne solution de repli.</td></tr><tr><td>.ttf / .otf</td><td>Fichiers TrueType / OpenType, également utilisables sur le Web.</td></tr><tr><td>.eot / .svg</td><td>Formats historiques ; principalement associés à d’anciens navigateurs.</td></tr></tbody></table></div>
+
+      <div class="code-pair">
+        <div class="code-unit"><p class="code-label"><strong>ARBORESCENCE DU PROJET</strong></p>
+      <pre class="code-block"><code>mon_site/
+├── index.html
+├── styles/
+│   └── style.css
+└── polices/
+    └── ballpark.woff</code></pre></div>
+        <div class="code-unit"><p class="code-label"><strong>DANS STYLES/STYLE.CSS</strong></p>
+      <pre class="code-block"><code>@font-face {
+    font-family: &quot;Ballpark&quot;;
+    src: url(&quot;../polices/ballpark.woff&quot;) format(&quot;woff&quot;);
+    font-display: swap;
+}</code></pre></div>
+      </div>
+      <p>Le chemin ../polices/ remonte depuis styles/ vers la racine du projet puis entre dans le dossier polices/. Le nom du fichier doit correspondre exactement à celui téléchargé.</p>
+      <h3>3. Charger une police depuis Google Fonts</h3>
+      <p>Google Fonts permet d’intégrer une police hébergée en ligne. Dans le &lt;head&gt; du document HTML, ajouter le lien correspondant à la police choisie, puis utiliser son nom dans font-family. Une connexion Internet est nécessaire pour charger cette version distante.</p>
+
+      <div class="code-pair">
+        <div class="code-unit"><p class="code-label"><strong>À PLACER DANS &lt;HEAD&gt;</strong></p>
+      <pre class="code-block"><code>&lt;link rel=&quot;stylesheet&quot;
+      href=&quot;https://fonts.googleapis.com/css2?family=Lavishly+Yours&amp;amp;display=swap&quot;&gt;</code></pre></div>
+        <div class="code-unit"><p class="code-label"><strong>CSS POUR AFFICHER « BIENVENUE »</strong></p>
+      <pre class="code-block"><code>p {
+    font-family: &quot;Lavishly Yours&quot;, Arial, sans-serif;
+    font-size: xx-large;
+    color: blue;
+}</code></pre></div>
+      </div>
+      <p>Autre possibilité : télécharger le fichier de la police, par exemple LavishlyYours-Regular.ttf, puis le charger localement avec @font-face, comme pour Ballpark.</p>
+      <h3>4. Exemple complet : Ballpark et Lavishly Yours</h3>
+      <p>Résultat attendu : « Année 2026 » en Ballpark, bleu et x-large ; « Vontovorona » en Lavishly Yours, rouge et medium. Le premier fichier est local ; le second est chargé depuis Google Fonts.</p>
+
+      <div class="code-pair">
+        <div class="code-unit"><p class="code-label"><strong>INDEX.HTML</strong></p>
+      <pre class="code-block"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;fr&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Choix des polices&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot;
+          href=&quot;https://fonts.googleapis.com/css2?family=Lavishly+Yours&amp;amp;display=swap&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;styles/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Année 2026&lt;/h1&gt;
+    &lt;h2&gt;Vontovorona&lt;/h2&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+        <div class="code-unit"><p class="code-label"><strong>STYLES/STYLE.CSS</strong></p>
+      <pre class="code-block"><code>@font-face {
+    font-family: &quot;Ballpark&quot;;
+    src: url(&quot;../polices/ballpark.woff&quot;) format(&quot;woff&quot;);
+    font-display: swap;
+}
+h1 { font-family: &quot;Ballpark&quot;, Arial, sans-serif;
+     font-size: x-large; color: blue; }
+h2 { font-family: &quot;Lavishly Yours&quot;, Impact, sans-serif;
+     font-size: medium; color: red; }</code></pre></div>
+      </div>
+    </section>
+    <section class="chapter" id="viii-texte-en-italique" aria-labelledby="viii-texte-en-italique-title">
+      <div class="chapter-heading">
+        <span class="chapter-badge" aria-hidden="true">VIII</span>
+        <h2 id="viii-texte-en-italique-title"><span class="visually-hidden">VIII — </span>Texte en italique</h2>
+      </div>
+      <p>La propriété font-style contrôle l’inclinaison : normal affiche le style droit, italic utilise si possible la vraie variante italique de la police et oblique incline les caractères. Certaines polices ne proposent pas toutes les variantes.</p>
+
+      <div class="code-pair">
+        <div class="code-unit"><p class="code-label"><strong>CSS : ANNÉE 2026, VONTOVORONA ET UN PARAGRAPHE NORMAL</strong></p>
+      <pre class="code-block"><code>h1 { font-style: italic;  font-size: medium; color: blue; }
+h2 { font-style: oblique; font-size: large;  color: red; }
+p  { font-style: normal; }</code></pre></div>
+        <div class="code-unit"><p class="code-label"><strong>HTML</strong></p>
+      <pre class="code-block"><code>&lt;h1&gt;Année 2026&lt;/h1&gt;
+&lt;h2&gt;Vontovorona&lt;/h2&gt;
+&lt;p&gt;J’aime cette école.&lt;/p&gt;</code></pre></div>
+      </div>
+    </section>
+    <section class="chapter" id="ix-texte-en-gras" aria-labelledby="ix-texte-en-gras-title">
+      <div class="chapter-heading">
+        <span class="chapter-badge" aria-hidden="true">IX</span>
+        <h2 id="ix-texte-en-gras-title"><span class="visually-hidden">IX — </span>Texte en gras</h2>
+      </div>
+      <p>La propriété font-weight règle l’épaisseur des caractères. normal correspond en général à 400 et bold à 700. On peut aussi utiliser lighter ou bolder, qui choisissent une graisse relativement à celle du parent.</p>
+      <div class="table-wrap"><table><thead><tr><th>Valeur</th><th>Graisse approximative</th><th>Valeur</th><th>Graisse approximative</th></tr></thead><tbody><tr><td>100</td><td>Très fin</td><td>200</td><td>Extra-fin</td></tr><tr><td>300</td><td>Fin</td><td>400</td><td>Normal</td></tr><tr><td>500</td><td>Moyen</td><td>600</td><td>Semi-gras</td></tr><tr><td>700</td><td>Gras</td><td>800</td><td>Très gras</td></tr><tr><td>900</td><td>Très épais</td><td>—</td><td>—</td></tr></tbody></table></div>
+      <p class="code-label"><strong>EXEMPLE</strong></p>
+      <pre class="code-block"><code>h1 { font-weight: 700; }
+.mot-important { font-weight: bolder; }</code></pre>
+      <aside class="note"><strong>À retenir  </strong>Le rendu dépend des graisses réellement disponibles dans la police. En HTML, &lt;strong&gt; indique une importance sémantique ; le CSS règle l’apparence visuelle.</aside>
+    </section>
+    <section class="chapter" id="x-decoration-d-un-texte" aria-labelledby="x-decoration-d-un-texte-title">
+      <div class="chapter-heading">
+        <span class="chapter-badge" aria-hidden="true">X</span>
+        <h2 id="x-decoration-d-un-texte-title"><span class="visually-hidden">X — </span>Décoration d’un texte</h2>
+      </div>
+      <p>text-decoration ajoute une ligne au texte : underline (en dessous), line-through (au milieu) ou overline (au-dessus). La valeur none retire la décoration. Les éléments &lt;span&gt; permettent de cibler seulement quelques mots.</p>
+
+      <div class="code-pair">
+        <div class="code-unit"><p class="code-label"><strong>CSS</strong></p>
+      <pre class="code-block"><code>.soulignement { text-decoration: underline; }
+.barre        { text-decoration: line-through; }
+.au_dessus    { text-decoration: overline; }</code></pre></div>
+        <div class="code-unit"><p class="code-label"><strong>HTML</strong></p>
+      <pre class="code-block"><code>&lt;p&gt;
+  &lt;span class=&quot;soulignement&quot;&gt;Ce texte est souligné&lt;/span&gt; d’abord,
+  puis il est &lt;span class=&quot;barre&quot;&gt;barré&lt;/span&gt;. Enfin,
+  il est &lt;span class=&quot;au_dessus&quot;&gt;surmonté d’une ligne&lt;/span&gt;.
+&lt;/p&gt;</code></pre></div>
+      </div>
+      <p class="aside-text">Conseil : éviter de supprimer systématiquement le soulignement des liens ; leur aspect doit rester identifiable pour l’utilisateur.</p>
+    </section>
+    <section class="chapter" id="xi-alignement-d-un-texte" aria-labelledby="xi-alignement-d-un-texte-title">
+      <div class="chapter-heading">
+        <span class="chapter-badge" aria-hidden="true">XI</span>
+        <h2 id="xi-alignement-d-un-texte-title"><span class="visually-hidden">XI — </span>Alignement d’un texte</h2>
+      </div>
+      <p>La propriété text-align agit sur le contenu en ligne à l’intérieur d’un bloc, par exemple le texte d’un paragraphe ou d’un titre.</p>
+      <div class="table-wrap"><table><thead><tr><th>Valeur</th><th>Résultat</th></tr></thead><tbody><tr><td>left</td><td>À gauche</td></tr><tr><td>right</td><td>À droite</td></tr><tr><td>center</td><td>Au centre</td></tr><tr><td>justify</td><td>Alignement sur les deux bords ; espaces ajustés entre les mots</td></tr></tbody></table></div>
+
+      <div class="code-pair">
+        <div class="code-unit"><p class="code-label"><strong>CSS</strong></p>
+      <pre class="code-block"><code>.titre {
+    text-align: center;
+    color: green;
+    font-size: large;
+}
+.contenu {
+    text-align: justify;
+    font-size: medium;
+}</code></pre></div>
+        <div class="code-unit"><p class="code-label"><strong>HTML</strong></p>
+      <pre class="code-block"><code>&lt;p class=&quot;titre&quot;&gt;Découvrir le CSS&lt;/p&gt;
+&lt;p class=&quot;contenu&quot;&gt;Le CSS permet de présenter clairement les
+textes, de choisir leurs couleurs et de structurer une page.&lt;/p&gt;</code></pre></div>
+      </div>
+      <p class="aside-text">Pour un court titre, centrer peut être utile. Pour de longues lignes, justify peut créer des blancs irréguliers : vérifier le résultat à l’écran.</p>
+    </section>
+    <section class="chapter" id="xii-couleur-du-texte-et-de-l-arriere-plan" aria-labelledby="xii-couleur-du-texte-et-de-l-arriere-plan-title">
+      <div class="chapter-heading">
+        <span class="chapter-badge" aria-hidden="true">XII</span>
+        <h2 id="xii-couleur-du-texte-et-de-l-arriere-plan-title"><span class="visually-hidden">XII — </span>Couleur du texte et de l’arrière-plan</h2>
+      </div>
+      <h3>1. Deux propriétés et plusieurs écritures</h3>
+      <p>color définit la couleur du texte ; background-color définit celle du fond. Une même couleur peut s’écrire avec un nom anglais, un code hexadécimal, des composantes RGB(A) ou le modèle HSL(A). Un outil pipette, par exemple dans Paint, permet de relever un code sur une image.</p>
+      <div class="table-wrap"><table><thead><tr><th>Écriture</th><th>Exemple</th><th>Principe</th></tr></thead><tbody><tr><td>Nom</td><td>color: red;</td><td>Nom anglais d’une couleur prédéfinie.</td></tr><tr><td>Hexadécimal</td><td>color: #25A958;</td><td>Rouge, vert et bleu : deux chiffres hexadécimaux par composante.</td></tr><tr><td>Hex court</td><td>color: #0F8;</td><td>Trois chiffres ; #0F8 équivaut à #00FF88.</td></tr><tr><td>RGB</td><td>color: rgb(37, 169, 88);</td><td>Chaque composante rouge, verte ou bleue vaut de 0 à 255.</td></tr><tr><td>RGBA</td><td>color: rgba(37, 169, 88, 0.5);</td><td>Le dernier nombre est l’opacité : 0 transparent, 1 opaque.</td></tr><tr><td>HSL</td><td>color: hsl(145, 64%, 40%);</td><td>Teinte en degrés, saturation en %, luminosité en %.</td></tr><tr><td>HSLA</td><td>color: hsla(145, 64%, 40%, 0.5);</td><td>HSL avec un canal d’opacité supplémentaire.</td></tr></tbody></table></div>
+      <aside class="note"><strong>Correction  </strong>rgb(44, 25, 347) est invalide comme notation entière : une composante RGB ne dépasse pas 255. On peut écrire par exemple rgb(44, 25, 255).</aside>
+      <h3>2. Comprendre la teinte HSL</h3>
+      <p>Sur le cercle chromatique : 0°/360° = rouge, 60° = jaune, 120° = vert, 180° = cyan, 240° = bleu et 300° = magenta. La saturation mesure l’intensité de la couleur ; la luminosité indique si elle est claire ou sombre. Ainsi, hsl(240, 100%, 25%) donne un bleu foncé.</p>
+      <h3>3. Exemple d’application</h3>
+
+      <div class="code-pair">
+        <div class="code-unit"><p class="code-label"><strong>CSS</strong></p>
+      <pre class="code-block"><code>.carte {
+    color: #183D29;
+    background-color: #EAF7EE;
+    font-family: Arial, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+}</code></pre></div>
+        <div class="code-unit"><p class="code-label"><strong>HTML</strong></p>
+      <pre class="code-block"><code>&lt;p class=&quot;carte&quot;&gt;Bienvenue à Vontovorona&lt;/p&gt;</code></pre></div>
+      </div>
+      <p>Veiller au contraste entre le texte et le fond : un texte clair sur un fond très clair devient difficile à lire.</p>
+      <h3>Mémo des propriétés CSS</h3>
+      <div class="table-wrap"><table><thead><tr><th>Propriété</th><th>Rôle</th></tr></thead><tbody><tr><td>font-size</td><td>Taille des caractères</td></tr><tr><td>font-family</td><td>Police et polices de remplacement</td></tr><tr><td>font-style / font-weight</td><td>Inclinaison / graisse</td></tr><tr><td>text-decoration / text-align</td><td>Lignes décoratives / alignement</td></tr><tr><td>color / background-color</td><td>Couleur du texte / du fond</td></tr></tbody></table></div>
+    </section>
+    </main>
+    <footer>
+      dd
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,203 @@
+/* =====================================================
+   Project Team - contact cards
+   Theme: navy blue (bleu marine) background
+   ===================================================== */
+
+:root {
+  --navy: #0b1f3f;                          /* bleu marine - page background */
+  --navy-card: rgba(255, 255, 255, 0.06);   /* card background */
+  --navy-border: rgba(255, 255, 255, 0.12); /* subtle borders */
+  --gold: #f1e208;                          /* accent colour */
+  --text: #ffffff;
+  --muted: #c3cfe6;
+  --radius: 16px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  background-color: var(--navy)!important;
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Header ---------- */
+.page-header {
+  padding: 4rem 1.5rem 2.5rem;
+  text-align: center;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.page-header h1::after {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 4px;
+  margin: 0.9rem auto 0;
+  border-radius: 2px;
+  background: var(--gold);
+}
+
+.page-header p {
+  margin: 1rem 0 0;
+  font-size: 1.05rem;
+  color: var(--muted);
+}
+
+/* ---------- Grid ---------- */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 3rem;
+}
+
+/* ---------- Card ---------- */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1.5rem 1.75rem;
+  text-align: center;
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: var(--radius);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+}
+
+.avatar {
+  flex-shrink: 0;
+  display: block;
+  width: 96px;
+  height: 96px;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--gold);
+  background: var(--navy-card);
+  box-shadow: 0 0 0 4px rgba(245, 196, 81, 0.25);
+}
+
+.name {
+  margin: 0 0 1.1rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.surname {
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
+/* ---------- Contact details ---------- */
+.contact-list {
+  display: grid;
+  gap: 0.7rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-width: 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.contact-list a {
+  min-width: 0;
+  color: inherit;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  transition: color 0.2s ease;
+}
+
+.contact-list a:hover {
+  color: var(--gold);
+  text-decoration: underline;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* ---------- Footer ---------- */
+.page-footer {
+  margin-top: auto;
+  padding: 1.5rem;
+  border-top: 1px solid var(--navy-border);
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* ---------- Accessibility & small screens ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .card,
+  .contact-list a {
+    transition: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-header {
+    padding-top: 3rem;
+  }
+
+  .card {
+    padding: 1.6rem 1.25rem 1.5rem;
+  }
+}

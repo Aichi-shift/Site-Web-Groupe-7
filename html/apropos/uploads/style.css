@@ -138,22 +138,21 @@ img {
    HEADER - NAVIGATION
    ========================= */
 .site-nav {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    background: var(--primary-dark) !important;
-    color: var(--text-white) !important;
-    padding: 0.5rem !important;
-    font-weight: var(--weight-semibold) !important;
-    width: 100% !important;
-    flex-wrap: wrap !important;
-    gap: 0.35rem !important;
-    border-radius: 5px !important;
-    margin: 0.75rem 0 1rem !important;
-    position:sticky !important;
-    top: 0.2rem !important;
-    z-index: 999 !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--primary-dark);
+    color: var(--text-white);
+    padding: 0.5rem;
+    font-weight: var(--weight-semibold);
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    border-radius: 5px;
+    margin: 0.75rem 0 1rem;
+    position:sticky;
+    top: 1rem;
+    z-index: 999;
 }
 .nav-link {
     position: relative;
@@ -333,7 +332,4 @@ img {
     .groupe-info {
         padding: 0.85rem;
     }
-}
-.site-footer {
-    
 }

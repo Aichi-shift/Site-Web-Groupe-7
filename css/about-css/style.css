@@ -1,0 +1,475 @@
+       /* =========================
+           DESIGN HORIZONTAL (Gauche à Droite)
+           ========================= */
+        body {
+            background: var(--bg);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .enveloppe_page {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem 0;
+            width: 100%;
+        }
+
+        .en_tete_page {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 0 1rem;
+        }
+
+        .titre_principal {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .sous_titre {
+            color: var(--text-muted);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Disposition HORIZONTALE (de gauche à droite) */
+        .conteneur_cartes {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            gap: 1.5rem;
+            padding: 2rem max(2rem, calc((100vw - 1200px) / 2));
+            width: 100%;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .conteneur_cartes::-webkit-scrollbar {
+            height: 12px;
+        }
+        .conteneur_cartes::-webkit-scrollbar-track {
+            background: rgba(18, 57, 168, 0.05);
+            border-radius: 10px;
+            margin: 0 2rem;
+        }
+        .conteneur_cartes::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+            border: 3px solid var(--bg);
+        }
+
+        /* ----- STYLE DES CARTES ----- */
+        .carte_personne {
+            flex: 0 0 280px;
+            scroll-snap-align: center;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(7, 26, 69, 0.05);
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1.8rem 1.5rem;
+            border: 1px solid rgba(18, 57, 168, 0.08);
+            position: relative;
+            z-index: 1;
+        }
+
+        .carte_personne::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .carte_personne:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(7, 26, 69, 0.12);
+        }
+
+        .image_profil {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 3px solid #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.4s ease;
+        }
+
+        .carte_personne:hover .image_profil {
+            transform: scale(1.05);
+        }
+
+        .nom_personne {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: var(--weight-semibold);
+            color: var(--text-dark);
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .profession_carte {
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        /* =========================
+           STYLE DU CV (STYLE IMAGE FOURNIE - SANS SCROLL)
+           ========================= */
+        .arriere_plan_cv {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(7, 26, 69, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(8px);
+        }
+
+        .arriere_plan_cv.actif {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .bouton_fermer_cv {
+            position: absolute;
+            top: 1rem; right: 1rem;
+            background: rgba(0,0,0,0.1);
+            border: none;
+            width: 38px; height: 38px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s, color 0.2s;
+            z-index: 50;
+        }
+
+        .bouton_fermer_cv:hover {
+            background: #ff4757;
+            color: #fff;
+        }
+
+        /* La Boite Principale du CV (A4 Ratio proportion) */
+        .boite_cv {
+            background: #fff;
+            width: 90vw;
+            max-width: 1000px;
+            /* Ratio A4 Landscape/Portrait adapté pour l'écran */
+            aspect-ratio: 1 / 1.1; 
+            max-height: 90vh; /* S'assure qu'on n'a pas de scroll global */
+            display: flex;
+            flex-direction: row;
+            overflow: hidden;
+            position: relative;
+            transform: translateY(40px) scale(0.95);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+        }
+
+        .arriere_plan_cv.actif .boite_cv {
+            transform: translateY(0) scale(1);
+        }
+
+        /* ----- COLONNE GAUCHE (1/3 de la largeur) ----- */
+        .colonne_gauche {
+            width: 32%;
+            background: #2a3c54; /* Couleur gris/bleu foncé du modèle */
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .cadre_image_cv {
+            width: 100%;
+            aspect-ratio: 1;
+            background: #f0f0f0;
+            overflow: hidden;
+        }
+
+        .image_cv {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .contenu_gauche {
+            padding: 1.5vw;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5vw;
+            flex: 1;
+        }
+
+        .titre_section_gauche {
+            font-size: clamp(0.7rem, 1.2vw, 1.1rem);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-align: center;
+            margin: 0 0 0.5vw 0;
+            font-weight: 500;
+        }
+
+        .texte_profil_cv {
+            text-align: center;
+            font-size: clamp(0.5rem, 0.9vw, 0.85rem);
+            line-height: 1.4;
+            color: #e0e6ed;
+            margin: 0;
+        }
+
+        .info_contact {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: clamp(0.5rem, 0.85vw, 0.8rem);
+            color: #e0e6ed;
+            margin-bottom: 0.5vw;
+        }
+
+        .info_contact svg {
+            width: 14px; height: 14px; fill: #fff; flex-shrink: 0;
+        }
+
+        .groupe_interet {
+            margin-bottom: 0.5vw;
+        }
+        
+        .titre_interet {
+            font-size: clamp(0.5rem, 0.8vw, 0.75rem);
+            font-weight: 600;
+            margin: 0;
+            text-transform: uppercase;
+            display: flex; align-items: center; gap: 5px;
+        }
+
+        .desc_interet {
+            font-size: clamp(0.5rem, 0.8vw, 0.75rem);
+            color: #e0e6ed;
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        /* ----- COLONNE DROITE (2/3 de la largeur) ----- */
+        .colonne_droite {
+            width: 68%;
+            background: #fff;
+            padding: 2vw 3vw;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5vw;
+        }
+
+        /* En-tête (Nom + Profession) */
+        .en_tete_cv {
+            margin-bottom: 0.5vw;
+        }
+
+        .nom_cv {
+            font-size: clamp(1.5rem, 3.5vw, 3rem);
+            font-weight: 400;
+            color: #2a3c54;
+            margin: 0;
+            line-height: 1.1;
+        }
+
+        .profession_cv {
+            font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+            font-weight: 400;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin: 5px 0 0 0;
+        }
+
+        /* Titres des sections (droite) */
+        .titre_section_droite {
+            font-size: clamp(0.8rem, 1.3vw, 1.2rem);
+            font-weight: 500;
+            color: #2a3c54;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 0 0 1vw 0;
+            position: relative;
+            display: inline-block;
+        }
+
+        .titre_section_droite::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 30px;
+            height: 3px;
+            background: #2a3c54;
+        }
+
+        /* Formation */
+        .liste_formations {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5vw;
+        }
+
+        .item_formation {
+            display: flex;
+            font-size: clamp(0.6rem, 1vw, 0.9rem);
+        }
+
+        .item_formation strong {
+            font-weight: 600;
+            color: #2a3c54;
+            width: 45px;
+            flex-shrink: 0;
+        }
+        
+        .item_formation span {
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .item_formation span.ecole {
+            font-weight: 400;
+            color: #666;
+        }
+
+        /* Expériences */
+        .liste_experiences {
+            display: flex;
+            flex-direction: column;
+            gap: 1vw;
+            flex: 1; /* Remplit l'espace */
+        }
+
+        .item_experience {
+            display: flex;
+            gap: 1vw;
+        }
+
+        .date_entreprise_exp {
+            width: 20%;
+            flex-shrink: 0;
+        }
+
+        .date_exp {
+            font-size: clamp(0.6rem, 0.9vw, 0.85rem);
+            font-weight: 600;
+            color: #2a3c54;
+            margin: 0;
+        }
+
+        .entreprise_exp {
+            font-size: clamp(0.6rem, 0.9vw, 0.85rem);
+            color: #666;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .details_exp {
+            width: 80%;
+        }
+
+        .titre_poste_exp {
+            font-size: clamp(0.65rem, 1vw, 0.9rem);
+            font-weight: 600;
+            color: #2a3c54;
+            margin: 0 0 0.3vw 0;
+            text-transform: uppercase;
+        }
+
+        .liste_taches {
+            margin: 0;
+            padding-left: 1vw;
+            font-size: clamp(0.55rem, 0.85vw, 0.8rem);
+            color: #555;
+            line-height: 1.4;
+        }
+
+        .liste_taches li {
+            margin-bottom: 0.2vw;
+            color: #777;
+        }
+
+        /* Compétences / Bas de page */
+        .section_bas {
+            display: flex;
+            gap: 2vw;
+            margin-top: auto; /* Pousse en bas */
+        }
+
+        .col_bas {
+            flex: 1;
+        }
+
+        .grille_competences {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 0.2vw 1vw;
+            font-size: clamp(0.6rem, 0.9vw, 0.85rem);
+        }
+
+        .comp_nom { font-weight: 500; color: #2a3c54; }
+        .comp_valeur { color: #666; }
+        
+        .liste_logiciels {
+            margin: 0; padding: 0; list-style: none;
+            font-size: clamp(0.6rem, 0.9vw, 0.85rem);
+            color: #666;
+        }
+        
+        /* Cacher la scrollbar horizontale si nécessaire, et empêcher le overflow de boite_cv */
+        @media (max-width: 768px) {
+            .boite_cv {
+                flex-direction: column;
+                overflow-y: auto; /* Scroll autorisé uniquement sur petits écrans où le sans scroll est impossible */
+                aspect-ratio: auto;
+                height: 90vh;
+            }
+            .colonne_gauche, .colonne_droite {
+                width: 100%;
+            }
+            .cadre_image_cv {
+                max-width: 250px;
+                margin: 0 auto;
+                border-radius: 50%;
+                margin-top: 1rem;
+            }
+            .contenu_gauche {
+                padding: 1rem;
+            }
+            .item_experience {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .date_entreprise_exp { width: 100%; display: flex; gap: 10px; align-items: center;}
+            .details_exp { width: 100%; }
+        }

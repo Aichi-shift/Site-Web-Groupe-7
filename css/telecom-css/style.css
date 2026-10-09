@@ -1,0 +1,231 @@
+/* ===== Thème bleu marine et blanc ===== */
+:root {
+  --marine: #0a1f44;
+  --marine-clair: #163466;
+  --marine-doux: #e8edf7;
+  --blanc: #ffffff;
+  --texte: #1c2b45;
+  --ombre: 0 4px 14px rgba(10, 31, 68, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--marine-doux);
+  color: var(--texte);
+  line-height: 1.6;
+}
+
+/* ===== Mise en page : menu à gauche + contenu ===== */
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ===== Menu latéral gauche ===== */
+aside {
+  width: 260px;
+  flex-shrink: 0;
+  background: var(--marine);
+  color: var(--blanc);
+  padding: 2rem 1.2rem;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  border-right: 5px solid var(--blanc);
+}
+
+nav {
+  display: flex;
+  position: sticky;
+  top: 3rem;
+  z-index: 999;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+nav a {
+  color: var(--blanc);
+  text-decoration: none;
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+}
+
+nav a:hover {
+  background: var(--blanc);
+  color: var(--marine);
+}
+
+nav a.actif {
+  background: var(--blanc);
+  color: var(--marine);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+/* ===== Zone de contenu ===== */
+.contenu {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background: var(--marine);
+  color: var(--blanc);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  border-bottom: 5px solid var(--blanc);
+}
+
+header h1 {
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+}
+
+header p {
+  margin-top: 0.5rem;
+  opacity: 0.85;
+}
+
+main {
+  width: 100%;
+  max-width: 980px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+section {
+  background: var(--blanc);
+  border-left: 6px solid var(--marine);
+  border-radius: 10px;
+  box-shadow: var(--ombre);
+  padding: 1.8rem 2rem;
+  margin-bottom: 1.8rem;
+}
+
+h2 {
+  color: var(--marine);
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--marine-doux);
+}
+
+h3 {
+  color: var(--marine-clair);
+  font-size: 1.2rem;
+  margin: 1.2rem 0 0.5rem;
+}
+
+p {
+  margin-bottom: 0.9rem;
+}
+
+ul {
+  margin: 0.5rem 0 1rem 1.4rem;
+}
+
+li {
+  margin-bottom: 0.4rem;
+}
+
+strong {
+  color: var(--marine);
+}
+
+/* ===== Cartes ===== */
+.grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.carte {
+  background: var(--marine);
+  color: var(--blanc);
+  border-radius: 10px;
+  padding: 1.4rem;
+  box-shadow: var(--ombre);
+}
+
+.carte h3 {
+  color: var(--blanc);
+  margin-top: 0;
+}
+
+.carte p {
+  opacity: 0.9;
+  margin-bottom: 0;
+}
+
+/* ===== Tableau ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th,
+td {
+  padding: 0.8rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--marine-doux);
+}
+
+th {
+  background: var(--marine);
+  color: var(--blanc);
+}
+
+tr:nth-child(even) td {
+  background: #f5f7fc;
+}
+
+/* ===== Pied de page ===== */
+footer {
+  background: var(--marine);
+  color: var(--blanc);
+  text-align: center;
+  padding: 1.2rem;
+  margin-top: auto;
+  border-top: 5px solid var(--blanc);
+}
+
+/* ===== Responsive : menu en haut sur petit écran ===== */
+@media (max-width: 760px) {
+  .layout {
+    flex-direction: column;
+  }
+  aside {
+    width: 100%;
+    height: auto;
+    position: static;
+    border-right: none;
+    border-bottom: 5px solid var(--blanc);
+    padding: 1.2rem;
+  }
+  aside .sous-titre {
+    margin-bottom: 1rem;
+  }
+  nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  header h1 {
+    font-size: 1.7rem;
+  }
+  section {
+    padding: 1.2rem;
+  }
+}
